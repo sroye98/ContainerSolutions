@@ -9,13 +9,19 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mainapi
-    ports:
-      - "50000:50000"
+    hostname: web
+    domainname: saachiroye.local
+    links:
+      - mainapi:mainapi
+    ports: 
+      - "80:80"
 
   mainapi:
     image: mainapi
     build:
       context: ./MainApi
       dockerfile: Dockerfile
+    hostname: services
+    domainname: saachiroye.local
     ports:
-      - "50001:50001"
+      - "81:80"

@@ -21,7 +21,6 @@ namespace MainWeb
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseUrls("http://*:50001")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
