@@ -1,17 +1,6 @@
 version: '3'
 
 services:
-  proxy:
-    image: haproxy
-    build:
-      context: ./Proxy
-      dockerfile: Dockerfile
-    ports:
-      - '80:80'
-      - '443:443'
-    depends_on:
-      - mainweb
-      - mainapi
 
   mainweb:
     image: mainweb
@@ -20,9 +9,13 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mainapi
+    ports:
+      - "5000:5000"
 
   mainapi:
     image: mainapi
     build:
       context: ./MainApi
       dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
