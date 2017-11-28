@@ -19,8 +19,10 @@ namespace MainApi
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls("http://*:50000")
                 .UseIISIntegration()
-                .UseUrls("http://*:5000")
                 .UseStartup<Startup>()
                 .Build();
     }
